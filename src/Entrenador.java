@@ -12,8 +12,6 @@ public class Entrenador extends Persona {
     }
 
     public static void agregarEntrenador(Equipo equipo) {
-
-        int anioLicencia;
         Entrenador entrenador = equipo.getEntrenador();
 
         if (entrenador == null){
@@ -23,7 +21,7 @@ public class Entrenador extends Persona {
             String apellido = App.lector.nextLine();
             System.out.println("Escriba el año de licencia del entrenador: ");
             String anioLicenciaIntroducida = App.lector.nextLine();
-            anioLicencia = Utilidades.parseInteger(anioLicenciaIntroducida);
+            int anioLicencia = Utilidades.parseInteger(anioLicenciaIntroducida);
 
             entrenador = new Entrenador(nombre, apellido, anioLicencia);
             equipo.setEntrenador(entrenador);

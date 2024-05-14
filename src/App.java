@@ -19,8 +19,7 @@ public class App {
             System.out.println("3. Gestionar equipo");
             System.out.println("4. Jugar Partido");
             System.out.println("5. Ver lista de equipos en la clasificación");
-            System.out.println("6. Lista de jugadores por altura");
-            System.out.println("7. Salir");
+            System.out.println("6. Salir");
             System.out.println("Escriba una de las opciones anteriores: ");
             opcionIntroducida = lector.nextLine();
             opcion = Utilidades.parseInteger(opcionIntroducida);
@@ -41,7 +40,7 @@ public class App {
                     break;
 
                 case 3:
-                    Equipo.seleccionarEquipo();
+                    Liga.seleccionarEquipo();
                     break;
 
                 case 4:
@@ -51,7 +50,9 @@ public class App {
                 case 5:
                     Liga.verClasificacion();
                     break;
+                case 6:
+                    break;
             }
-        } while (error || opcion != 7);
+        } while (error || opcion != 6);
     }
 }

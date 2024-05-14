@@ -17,18 +17,15 @@ class Equipo {
     }
 
     public static void altaEquipo() {
-        String nombreEquipo;
-        String nombreCiudad;
-        Equipo equipo = null;
 
         System.out.println("Escriba el nombre del equipo: ");
-        nombreEquipo = App.lector.nextLine();
-        equipo = Liga.buscarEquipo(nombreEquipo);
+        String nombreEquipo = App.lector.nextLine();
+        Equipo equipo = Liga.buscarEquipo(nombreEquipo);
 
         if (equipo == null){
 
             System.out.println("Escriba el nombre de la ciudad del equipo: ");
-            nombreCiudad = App.lector.nextLine();
+            String nombreCiudad = App.lector.nextLine();
             equipo = new Equipo (nombreEquipo, nombreCiudad);
             Liga.getEquipos().add(equipo);
             System.out.println("Equipo agregado correctamente.");
@@ -40,38 +37,20 @@ class Equipo {
 
     public static void bajaEquipo () {
 
-        String equipoBorrar;
         System.out.println("Lista de equipos: \n");
         for (Equipo equipo: Liga.getEquipos()) {
             System.out.println("- Equipo: " + equipo.getNombreEquipo() + " de " + equipo.getCiudadEquipo());
         }
 
         System.out.println("Escriba el nombre del equipo que desea borrar.");
-        equipoBorrar = App.lector.next();
+        String equipoBorrar = App.lector.next();
+        Equipo equipo = Liga.buscarEquipo(equipoBorrar);
 
-        for (Equipo equipo : Liga.getEquipos()) {
-            if (equipo.getNombreEquipo().equals(equipoBorrar)) {
-                Liga.getEquipos().remove(equipo);
-                System.out.println("Equipo eliminado correctamente.");
-                return;
-            }
-        }
-        System.out.println("Ese equipo no existe.");
-        return;
-    }
-
-    public static void seleccionarEquipo(){
-        Equipo equipo = null;
-        String equipoBuscado;
-
-        Liga.listaEquipos();
-
-        System.out.println("Escriba el nombre del equipo");
-        equipoBuscado = App.lector.nextLine();
-        equipo = Liga.buscarEquipo(equipoBuscado);
-
-        if (equipo != null){
-            Liga.gestionarEquipo(equipo);
+        if (equipo != null) {
+            Liga.getEquipos().remove(equipo);
+            System.out.println("Equipo eliminado correctamente.");
+        } else {
+            System.out.println("Ese equipo no existe.");
         }
     }
 
@@ -99,6 +78,7 @@ class Equipo {
         for (Equipo equipo : Liga.getEquipos())
             for (Jugador jugadorEnLista : equipo.getJugadores()){
                 if (jugadorEnLista.getDorsalJugador().equals(dorsalBuscado)){
+                    jugador = jugadorEnLista;
                     return jugador;
                 }
         }

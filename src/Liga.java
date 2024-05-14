@@ -20,6 +20,20 @@ public class Liga {
         return equipo;
     }
 
+    public static void seleccionarEquipo(){
+        Equipo equipo = null;
+        String equipoBuscado;
+
+        listaEquipos();
+
+        System.out.println("Escriba el nombre del equipo");
+        equipoBuscado = App.lector.nextLine();
+        equipo = buscarEquipo(equipoBuscado);
+
+        if (equipo != null){
+            gestionarEquipo(equipo);
+        }
+    }
     
     public static void agregarPuntos (int canastasEquipo1, int canastasEquipo2, Equipo equipo1, Equipo equipo2){
         int puntosEquipoGanador;
